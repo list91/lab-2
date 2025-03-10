@@ -28,21 +28,32 @@ class DiplomaValidator:
 
     def check_document_structure(self):
         """Проверка структуры документа"""
-        chapters = [
-            p.text for p in self.document.paragraphs 
-            if p.style and 'Heading' in p.style.name
-        ]
+        # Получаем все заголовки первого уровня
+        headings = []
+        for p in self.document.paragraphs:
+            if p.style and p.style.name == 'Heading 1':
+                headings.append(p.text)
+            elif p.style and p.style.name.startswith('Heading') and p.text.strip().startswith(tuple('12345678')):
+                headings.append(p.text)
 
         # Проверка наличия глав
+        found_chapters = []
         for expected_chapter in self.EXPECTED_CHAPTERS:
-            if not any(expected_chapter in chapter for chapter in chapters):
+            chapter_num = expected_chapter.split('.')[0]
+            found = False
+            for heading in headings:
+                if heading.startswith(chapter_num + '.') or heading.startswith(chapter_num + ' '):
+                    found = True
+                    found_chapters.append(expected_chapter)
+                    break
+            
+            if not found:
                 self.validation_results['структурные_требования'].append(
                     f'❌ Отсутствует глава: {expected_chapter}'
                 )
 
         # Проверка порядка глав
-        chapter_order = [chapter for chapter in chapters if any(ec in chapter for ec in self.EXPECTED_CHAPTERS)]
-        if chapter_order != self.EXPECTED_CHAPTERS:
+        if found_chapters != [ch for ch in self.EXPECTED_CHAPTERS if ch in found_chapters]:
             self.validation_results['структурные_требования'].append(
                 '❌ Нарушен порядок глав в документе'
             )
@@ -54,7 +65,7 @@ class DiplomaValidator:
             # Проверка полей
             checks = [
                 (section.left_margin.inches, 1.18, 'Левое поле'),
-                (section.right_margin.inches, 0.39, 'Правое поле'),
+                (section.right_margin.inches, 0.59, 'Правое поле'),
                 (section.top_margin.inches, 0.79, 'Верхнее поле'),
                 (section.bottom_margin.inches, 0.79, 'Нижнее поле')
             ]
@@ -68,22 +79,44 @@ class DiplomaValidator:
     def check_typography(self):
         """Проверка типографских требований"""
         font_errors = 0
-        for paragraph in self.document.paragraphs:
-            if paragraph.runs:
-                run = paragraph.runs[0]
+        font_error_details = []
+        
+        # Проверка стилей абзацев
+        for i, paragraph in enumerate(self.document.paragraphs):
+            # Пропускаем пустые абзацы
+            if not paragraph.text.strip():
+                continue
                 
+            # Пропускаем заголовки
+            if paragraph.style and paragraph.style.name.startswith('Heading'):
+                continue
+                
+            # Проверка шрифта в каждом фрагменте текста
+            for run in paragraph.runs:
                 # Проверка шрифта
-                if run.font.name != 'Times New Roman':
+                if run.font.name and run.font.name != 'Times New Roman':
                     font_errors += 1
+                    if len(font_error_details) < 5:  # Сохраняем только первые 5 ошибок для примера
+                        font_error_details.append(f'Абзац {i+1}: Шрифт {run.font.name} вместо Times New Roman')
                 
                 # Проверка размера шрифта
-                if run.font.size and run.font.size.pt != 14:
+                if run.font.size and run.font.size.pt != 16:
                     font_errors += 1
+                    if len(font_error_details) < 5:
+                        font_error_details.append(f'Абзац {i+1}: Размер шрифта {run.font.size.pt} вместо 16')
 
-        if font_errors > 10:
+        # Добавляем информацию об ошибках
+        if font_errors > 0:
             self.validation_results['технические_требования'].append(
                 f'❌ Обнаружено {font_errors} нарушений шрифта и размера'
             )
+            
+            # Добавляем примеры ошибок
+            if font_error_details:
+                self.validation_results['технические_требования'].append(
+                    f'ℹ️ Примеры ошибок:\n' + '\n'.join(font_error_details) + 
+                    (f'\n... и еще {font_errors - len(font_error_details)} ошибок' if font_errors > len(font_error_details) else '')
+                )
 
     def calculate_document_metrics(self):
         """Расчет метрик документа"""
