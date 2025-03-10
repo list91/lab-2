@@ -1,12 +1,15 @@
 import os
 import re
-from typing import List
+import shutil
+from typing import List, Dict, Any
 import markdown
 from docx import Document
 from docx.shared import Pt, Mm, RGBColor
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT, WD_LINE_SPACING
 from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.section import WD_SECTION
+from docx.styles.style import _ParagraphStyle, _CharacterStyle, _TableStyle
+from docxtpl import DocxTemplate
 
 class DiplomaFormatter:
     CHAPTER_TRANSLATIONS = {
@@ -20,48 +23,81 @@ class DiplomaFormatter:
         '8_appendices': '8. Приложения'
     }
 
-    def __init__(self, chapters_dir: str, output_path: str):
+    def __init__(self, chapters_dir: str, output_path: str, template_path: str):
         self.chapters_dir = chapters_dir
         self.output_path = output_path
-        self.document = Document()
-        self._setup_document_styles()
-
-    def _setup_document_styles(self):
-        """Настройка стилей документа по ГОСТ"""
-        # Настройка полей документа
-        sections = self.document.sections
-        for section in sections:
-            section.page_height = Mm(297)
-            section.page_width = Mm(210)
-            section.left_margin = Mm(30)
-            section.right_margin = Mm(15)
-            section.top_margin = Mm(20)
-            section.bottom_margin = Mm(20)
-
-        # Настройка стиля Normal
-        try:
-            style = self.document.styles['Normal']
-        except KeyError:
-            style = self.document.styles.add_style('Normal', WD_STYLE_TYPE.PARAGRAPH)
+        self.template_path = template_path
         
-        style.font.name = 'Times New Roman'
-        style.font.size = Pt(16)  # Увеличен размер шрифта
-        style.paragraph_format.line_spacing = 1.5
-        style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-        style.paragraph_format.first_line_indent = Mm(12.5)
+        # Создаем копию шаблона для работы
+        shutil.copy(self.template_path, self.output_path)
+        
+        # Открываем документ на основе шаблона
+        self.document = Document(self.output_path)
+        
+        # Очищаем содержимое шаблона, но сохраняем стили
+        self._clear_template_content()
+        
+        # Настраиваем дополнительные стили, если нужно
+        self._setup_additional_styles()
 
-        # Стили для заголовков
-        for level in range(1, 4):
-            try:
-                heading_style = self.document.styles[f'Heading{level}']
-            except KeyError:
-                heading_style = self.document.styles.add_style(f'Heading{level}', WD_STYLE_TYPE.PARAGRAPH)
+    def _clear_template_content(self):
+        """Очистка содержимого шаблона, сохраняя стили и структуру"""
+        # Удаляем все параграфы, кроме последнего
+        while len(self.document.paragraphs) > 1:
+            p = self.document.paragraphs[0]._p
+            p.getparent().remove(p)
             
-            heading_style.font.name = 'Times New Roman'
-            heading_style.font.size = Pt(16 + (level * 2))  # Увеличен базовый размер
-            heading_style.font.bold = True
-            heading_style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-            heading_style.paragraph_format.space_after = Pt(12)
+        # Если остался один параграф, очищаем его
+        if len(self.document.paragraphs) == 1:
+            self.document.paragraphs[0].text = ''
+            
+        # Удаляем все таблицы
+        while len(self.document.tables) > 0:
+            tbl = self.document.tables[0]._tbl
+            tbl.getparent().remove(tbl)
+            
+        # Добавляем пустой параграф для начала документа
+        self.document.add_paragraph()
+
+    def _setup_additional_styles(self):
+        """Настройка дополнительных стилей, если они не определены в шаблоне"""
+        # Проверяем наличие основных стилей
+        required_styles = ['ВКР Обычный', 'ВКР Глава-Раздел', 'ВКР Параграф', 'ВКР Пункт']
+        
+        for style_name in required_styles:
+            if style_name not in [s.name for s in self.document.styles]:
+                # Если стиль отсутствует, создаем его на основе базовых стилей
+                if style_name == 'ВКР Обычный':
+                    style = self.document.styles.add_style(style_name, WD_STYLE_TYPE.PARAGRAPH)
+                    style.font.name = 'Times New Roman'
+                    style.font.size = Pt(16)
+                    style.paragraph_format.line_spacing = 1.5
+                    style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    style.paragraph_format.first_line_indent = Mm(12.5)
+                    
+                elif style_name == 'ВКР Глава-Раздел':
+                    style = self.document.styles.add_style(style_name, WD_STYLE_TYPE.PARAGRAPH)
+                    style.font.name = 'Times New Roman'
+                    style.font.size = Pt(20)
+                    style.font.bold = True
+                    style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+                    style.paragraph_format.space_after = Pt(12)
+                    
+                elif style_name == 'ВКР Параграф':
+                    style = self.document.styles.add_style(style_name, WD_STYLE_TYPE.PARAGRAPH)
+                    style.font.name = 'Times New Roman'
+                    style.font.size = Pt(18)
+                    style.font.bold = True
+                    style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+                    style.paragraph_format.space_after = Pt(12)
+                    
+                elif style_name == 'ВКР Пункт':
+                    style = self.document.styles.add_style(style_name, WD_STYLE_TYPE.PARAGRAPH)
+                    style.font.name = 'Times New Roman'
+                    style.font.size = Pt(16)
+                    style.font.bold = True
+                    style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+                    style.paragraph_format.space_after = Pt(12)
 
     def _convert_markdown_to_docx(self, markdown_text: str):
         """Конвертация Markdown в docx с сохранением структуры"""
@@ -71,13 +107,21 @@ class DiplomaFormatter:
         
         for line in lines:
             if line.startswith('## '):
-                # Заголовок второго уровня
+                # Заголовок второго уровня (параграф)
                 heading_text = line.replace('## ', '').strip()
-                self.document.add_heading(heading_text, level=2)
+                # Используем стиль ВКР Параграф вместо стандартного Heading 2
+                if 'ВКР Параграф' in [s.name for s in self.document.styles]:
+                    self.document.add_paragraph(heading_text, style='ВКР Параграф')
+                else:
+                    self.document.add_heading(heading_text, level=2)
             elif line.startswith('### '):
-                # Заголовок третьего уровня
+                # Заголовок третьего уровня (пункт)
                 heading_text = line.replace('### ', '').strip()
-                self.document.add_heading(heading_text, level=3)
+                # Используем стиль ВКР Пункт вместо стандартного Heading 3
+                if 'ВКР Пункт' in [s.name for s in self.document.styles]:
+                    self.document.add_paragraph(heading_text, style='ВКР Пункт')
+                else:
+                    self.document.add_heading(heading_text, level=3)
             else:
                 processed_lines.append(line)
         
@@ -102,7 +146,11 @@ class DiplomaFormatter:
             clean_text = re.sub(r'<[^>]+>', '', paragraph).strip()
             
             if clean_text:
-                para = self.document.add_paragraph(clean_text, style='Normal')
+                # Используем стиль ВКР Обычный вместо стандартного Normal
+                if 'ВКР Обычный' in [s.name for s in self.document.styles]:
+                    para = self.document.add_paragraph(clean_text, style='ВКР Обычный')
+                else:
+                    para = self.document.add_paragraph(clean_text, style='Normal')
                 
                 # Явно устанавливаем шрифт для каждого фрагмента текста
                 for run in para.runs:
@@ -129,8 +177,11 @@ class DiplomaFormatter:
         # Перевод заголовка главы
         translated_name = self.CHAPTER_TRANSLATIONS.get(chapter_name, chapter_name)
         
-        # Добавление заголовка главы
-        self.document.add_heading(translated_name, level=1)
+        # Добавление заголовка главы с использованием специального стиля
+        if 'ВКР Глава-Раздел' in [s.name for s in self.document.styles]:
+            self.document.add_paragraph(translated_name, style='ВКР Глава-Раздел')
+        else:
+            self.document.add_heading(translated_name, level=1)
         
         # Конвертация контента
         self._convert_markdown_to_docx(content)
@@ -178,8 +229,9 @@ class DiplomaFormatter:
 def main():
     diploma_dir = '/home/user/study/diplom/chapters'
     output_path = '/home/user/study/diplom/diploma.docx'
+    template_path = '/home/user/Downloads/vkr-2024.docx'
     
-    formatter = DiplomaFormatter(diploma_dir, output_path)
+    formatter = DiplomaFormatter(diploma_dir, output_path, template_path)
     formatter.compile_diploma()
 
 if __name__ == '__main__':

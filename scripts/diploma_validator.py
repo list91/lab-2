@@ -31,9 +31,14 @@ class DiplomaValidator:
         # Получаем все заголовки первого уровня
         headings = []
         for p in self.document.paragraphs:
+            # Проверка стандартных стилей
             if p.style and p.style.name == 'Heading 1':
                 headings.append(p.text)
-            elif p.style and p.style.name.startswith('Heading') and p.text.strip().startswith(tuple('12345678')):
+            # Проверка стилей ВКР
+            elif p.style and p.style.name == 'ВКР Глава-Раздел':
+                headings.append(p.text)
+            # Проверка по номеру главы
+            elif p.style and (p.style.name.startswith('Heading') or p.style.name.startswith('ВКР')) and p.text.strip().startswith(tuple('12345678')):
                 headings.append(p.text)
 
         # Проверка наличия глав
@@ -87,8 +92,11 @@ class DiplomaValidator:
             if not paragraph.text.strip():
                 continue
                 
-            # Пропускаем заголовки
-            if paragraph.style and paragraph.style.name.startswith('Heading'):
+            # Пропускаем заголовки и специальные стили
+            if paragraph.style and (paragraph.style.name.startswith('Heading') or 
+                                   paragraph.style.name.startswith('ВКР Глава') or 
+                                   paragraph.style.name.startswith('ВКР Параграф') or 
+                                   paragraph.style.name.startswith('ВКР Пункт')):
                 continue
                 
             # Проверка шрифта в каждом фрагменте текста
@@ -138,7 +146,11 @@ class DiplomaValidator:
             if paragraph.style:
                 paragraph_styles[paragraph.style.name] = paragraph_styles.get(paragraph.style.name, 0) + 1
 
-        if len(paragraph_styles) > 5:
+        # Для шаблона ВКР допускаем больше стилей
+        vkr_styles = sum(1 for style in paragraph_styles if style.startswith('ВКР'))
+        other_styles = len(paragraph_styles) - vkr_styles
+        
+        if other_styles > 5 and vkr_styles == 0:
             self.validation_results['стилистические_замечания'].append(
                 f'⚠️ Слишком много различных стилей: {list(paragraph_styles.keys())}'
             )
