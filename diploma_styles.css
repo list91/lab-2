@@ -1,0 +1,38 @@
+/* Глобальные стили для диплома */
+body {
+    font-family: 'Times New Roman', serif;
+    font-size: 14pt;
+    line-height: 1.5;
+    max-width: 160mm;  /* Соответствует стандартным полям */
+    margin: 20mm auto;
+    padding: 30mm 10mm;
+    text-align: justify;
+}
+
+h1, h2, h3 {
+    margin-top: 14pt;
+    margin-bottom: 14pt;
+}
+
+p {
+    margin-bottom: 14pt;
+    text-indent: 12.5mm;  /* Красная строка */
+}
+
+/* Технические ограничения */
+p, li {
+    max-width: 160mm;
+    word-wrap: break-word;
+}
+
+/* Списки */
+ul, ol {
+    padding-left: 12.5mm;
+}
+
+/* Код */
+pre, code {
+    font-family: 'Courier New', monospace;
+    font-size: 12pt;
+    line-height: 1.2;
+}
