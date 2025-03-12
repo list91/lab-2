@@ -8,6 +8,7 @@ from docx import Document
 from docx.shared import Pt, Inches, Cm, RGBColor
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT, WD_LINE_SPACING
 from docx.enum.style import WD_STYLE_TYPE
+from docx.oxml.ns import qn
 import markdown
 from bs4 import BeautifulSoup
 
@@ -91,6 +92,30 @@ def setup_document_styles(doc):
     style_code.paragraph_format.first_line_indent = Cm(0)
     style_code.paragraph_format.space_before = Pt(6)
     style_code.paragraph_format.space_after = Pt(6)
+    
+    # Стиль для таблиц
+    if 'Table' in doc.styles:
+        style_table = doc.styles['Table']
+    else:
+        style_table = doc.styles.add_style('Table', WD_STYLE_TYPE.PARAGRAPH)
+    style_table.base_style = doc.styles['Normal']
+    style_table.font.size = Pt(12)
+    style_table.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    style_table.paragraph_format.space_before = Pt(6)
+    style_table.paragraph_format.space_after = Pt(6)
+    
+    # Стиль для подписей к рисункам и таблицам
+    if 'Caption' in doc.styles:
+        style_caption = doc.styles['Caption']
+    else:
+        style_caption = doc.styles.add_style('Caption', WD_STYLE_TYPE.PARAGRAPH)
+    style_caption.base_style = doc.styles['Normal']
+    style_caption.font.italic = True
+    style_caption.font.size = Pt(12)
+    style_caption.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    style_caption.paragraph_format.space_before = Pt(6)
+    style_caption.paragraph_format.space_after = Pt(12)
+    style_caption.paragraph_format.first_line_indent = Cm(0)
     
     return doc
 
