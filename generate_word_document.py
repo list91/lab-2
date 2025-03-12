@@ -403,6 +403,16 @@ def create_word_document(chapters_dir, output_file):
     # Настраиваем стили документа
     doc = setup_document_styles(doc)
     
+    # Отключаем проверку орфографии для всего документа
+    try:
+        # Получаем доступ к основному объекту документа
+        doc._element.body.docPr = doc._element.body.get_or_add_docPr()
+        # Отключаем проверку орфографии
+        doc._element.settings.get_or_add_proofState().attr_grammar = "clean"
+        doc._element.settings.get_or_add_proofState().attr_spelling = "clean"
+    except Exception as e:
+        print(f"Не удалось отключить проверку орфографии: {e}")
+    
     # Добавляем титульную страницу
     add_title_page(doc)
     
