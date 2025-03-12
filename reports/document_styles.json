@@ -1,0 +1,767 @@
+{
+    "paragraph_styles": {
+        "Normal": {
+            "name": "Normal",
+            "font": "Times New Roman",
+            "font_size": "14.0 pt",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "Heading 1": {
+            "name": "Heading 1",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": true,
+            "italic": null,
+            "underline": null
+        },
+        "Heading 2": {
+            "name": "Heading 2",
+            "font": null,
+            "font_size": "13.0 pt",
+            "bold": true,
+            "italic": null,
+            "underline": null
+        },
+        "Heading 3": {
+            "name": "Heading 3",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": true,
+            "italic": null,
+            "underline": null
+        },
+        "List Paragraph": {
+            "name": "List Paragraph",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "footnote text": {
+            "name": "footnote text",
+            "font": null,
+            "font_size": "10.0 pt",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "Balloon Text": {
+            "name": "Balloon Text",
+            "font": "Tahoma",
+            "font_size": "8.0 pt",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "No Spacing": {
+            "name": "No Spacing",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "Normal (Web)": {
+            "name": "Normal (Web)",
+            "font": null,
+            "font_size": "12.0 pt",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "Footer": {
+            "name": "Footer",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "Header": {
+            "name": "Header",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Содержимое таблицы": {
+            "name": "ВКР Содержимое таблицы",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "Содержимое таблицы": {
+            "name": "Содержимое таблицы",
+            "font": null,
+            "font_size": "12.0 pt",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "toc 2": {
+            "name": "toc 2",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "Title": {
+            "name": "Title",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": true,
+            "italic": null,
+            "underline": null
+        },
+        "toc 1": {
+            "name": "toc 1",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": true,
+            "italic": null,
+            "underline": null
+        },
+        "Параграфы": {
+            "name": "Параграфы",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": true,
+            "italic": null,
+            "underline": null
+        },
+        "TOC Heading": {
+            "name": "TOC Heading",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Пункт": {
+            "name": "ВКР Пункт",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": true,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Глава-Раздел": {
+            "name": "ВКР Глава-Раздел",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Параграф": {
+            "name": "ВКР Параграф",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Обычный": {
+            "name": "ВКР Обычный",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Рисунок": {
+            "name": "ВКР Рисунок",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Название таблицы": {
+            "name": "ВКР Название таблицы",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Литература": {
+            "name": "ВКР Литература",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Формула": {
+            "name": "ВКР Формула",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        },
+        "ВКР Заголовки таблицы": {
+            "name": "ВКР Заголовки таблицы",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": true,
+            "italic": null,
+            "underline": null
+        },
+        "toc 3": {
+            "name": "toc 3",
+            "font": null,
+            "font_size": "Unknown",
+            "bold": null,
+            "italic": null,
+            "underline": null
+        }
+    },
+    "character_styles": {},
+    "table_styles": {},
+    "document_defaults": {
+        "font": "Times New Roman",
+        "font_size": "14.0 pt"
+    },
+    "paragraph_formats": {
+        "paragraph_1": {
+            "text_preview": "МИНИСТЕРСТВО ПРОСВЕЩЕНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_3": {
+            "text_preview": "ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬ...",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_4": {
+            "text_preview": "«РОССИЙСКИЙ ГОСУДАРСТВЕННЫЙ",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_5": {
+            "text_preview": "ПЕДАГОГИЧЕСКИЙ УНИВЕРСИТЕТ им. А. И. ГЕРЦЕНА»",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_10": {
+            "text_preview": "Направление подготовки/специальность \n44.03.01 Пед...",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_12": {
+            "text_preview": "направленность (профиль)/специализация",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_13": {
+            "text_preview": "«Физическое образование»",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_15": {
+            "text_preview": "Выпускная квалификационная работа",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_16": {
+            "text_preview": "Название (тема) выпускной квалификационной работы",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.0"
+        },
+        "paragraph_20": {
+            "text_preview": "Санкт-Петербург",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.15"
+        },
+        "paragraph_21": {
+            "text_preview": "2024",
+            "style": "Normal",
+            "alignment": "По центру",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "1.15"
+        },
+        "paragraph_22": {
+            "text_preview": "ОГЛАВЛЕНИЕ",
+            "style": "Title",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_36": {
+            "text_preview": "Введение",
+            "style": "ВКР Глава-Раздел",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_37": {
+            "text_preview": "Образование является одной из самых важных сфер де...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_38": {
+            "text_preview": "… … …  ",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_39": {
+            "text_preview": "Глава 1. название первой главы выпускной квалифика...",
+            "style": "ВКР Глава-Раздел",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_40": {
+            "text_preview": "1.1. Название первого параграфа первой главы",
+            "style": "ВКР Параграф",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_41": {
+            "text_preview": "В последнее время весьма активно обсуждаемым на вс...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_42": {
+            "text_preview": "… … …",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_43": {
+            "text_preview": "1.2. Название второго параграфа первой главы",
+            "style": "ВКР Параграф",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_44": {
+            "text_preview": "Социокультурная практика предполагает последовател...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_45": {
+            "text_preview": "С целью обоснования сущностных особенностей социок...",
+            "style": "Normal",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_46": {
+            "text_preview": "Во-первых, подчеркнем, что социокультурная практик...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_47": {
+            "text_preview": "… … …",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_48": {
+            "text_preview": "Глава 2. название второй главы выпускной квалифика...",
+            "style": "ВКР Глава-Раздел",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_49": {
+            "text_preview": "Итак, в предыдущей главе было доказано, что органи...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_50": {
+            "text_preview": "… … …",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_51": {
+            "text_preview": "2.1. Название первого параграфа второй главы",
+            "style": "ВКР Параграф",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_52": {
+            "text_preview": "Слово «quest» имеет английское происхождение. В пе...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_53": {
+            "text_preview": "2.1.1. Название первого пункта первого параграфа в...",
+            "style": "ВКР Пункт",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_54": {
+            "text_preview": "Квест-технология – один из форматов игровой технол...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_55": {
+            "text_preview": "В подростковом возрасте дети постепенно начинают т...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_56": {
+            "text_preview": "Глава 3. название третьей главы выпускной квалифик...",
+            "style": "ВКР Глава-Раздел",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_57": {
+            "text_preview": "3.1. Название первого параграфа третьей главы",
+            "style": "ВКР Параграф",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_58": {
+            "text_preview": "На сегодняшний день на возможности квест-технологи...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_59": {
+            "text_preview": "Таблица 1. Название таблицы",
+            "style": "ВКР Название таблицы",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_61": {
+            "text_preview": "Пользуясь интернет ресурсами мы выяснили, что мног...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_62": {
+            "text_preview": "Рассмотрение и анализ различных конкретных вариант...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_64": {
+            "text_preview": "Рисунок 1. Название первого рисунка",
+            "style": "ВКР Рисунок",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_65": {
+            "text_preview": "Квесты, то есть квестовую технологию, учитывая ее ...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_66": {
+            "text_preview": ", \t\t    (1)",
+            "style": "ВКР Формула",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_67": {
+            "text_preview": "К тому же, анализ конкретных вариантов реализации ...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_68": {
+            "text_preview": "Заключение",
+            "style": "ВКР Глава-Раздел",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_69": {
+            "text_preview": "Подведем итоги проведенного выпускного квалификаци...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_70": {
+            "text_preview": "Прежде всего, на основе анализа педагогической лит...",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_71": {
+            "text_preview": "… … …",
+            "style": "ВКР Обычный",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_72": {
+            "text_preview": "Список литературы",
+            "style": "ВКР Глава-Раздел",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_73": {
+            "text_preview": "Поляков Т. Н. Основы педагогики театрально-игровой...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_74": {
+            "text_preview": "Баранов А. С. Информационно-экскурсионная деятельн...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_75": {
+            "text_preview": "Технологии психолого-педагогического сопровождения...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_76": {
+            "text_preview": "Риторика: учебник для вузов / Черняк В. Д., Дунев ...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_77": {
+            "text_preview": "Гавронская Ю. Ю. Тренды современного образования: ...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_78": {
+            "text_preview": "Ларченко Л. В. Нефтегазодобывающие регионы российс...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_79": {
+            "text_preview": "Степанова А. С. Принцип \"Ars Imitatur Naturam\" в г...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_80": {
+            "text_preview": "Дистанционное обучение как форма организации образ...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_81": {
+            "text_preview": "Кожевников С. М. Научно-методическое сопровождение...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_82": {
+            "text_preview": "Волкова Е. В. Музейный дизайн: историко-культурный...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_83": {
+            "text_preview": "Багузина Е. И. Веб-квест технология как дидактичес...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        },
+        "paragraph_84": {
+            "text_preview": "Библиотека материалов для работников школы. Педпор...",
+            "style": "ВКР Литература",
+            "alignment": "Unknown",
+            "left_indent": "0",
+            "right_indent": "0",
+            "first_line_indent": "0",
+            "line_spacing": "Unknown"
+        }
+    }
+}
